@@ -58,8 +58,8 @@ const signupValidationSchema = yup.object().shape({
   return (
     <>
     <StatusBar style="dark" />
-    <View style={styles.body}>
-     <Card style={styles.card}>
+    <View >
+     <Card>
         <Card.Content>
             <Title style={styles.title}>Create Account</Title>
             <Paragraph style={styles.message}>{/* Error messages go here */}</Paragraph>
@@ -156,7 +156,7 @@ const styles = StyleSheet.create({
       title:{
         textAlign: 'center',
         fontWeight: '900',
-        color: '#000',
+        color: '#fff',
         margin: 10,
         fontSize: 30
       },

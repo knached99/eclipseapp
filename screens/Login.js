@@ -28,9 +28,9 @@ const Login = ({navigation}) => {
   return (
     <>
      <StatusBar style="dark" />
-    <View style={styles.body}>
+    <View>
       <KeyboardAvoidingView>
-    <Card style={styles.card}>
+    <Card>
     <Card.Content>
       <Title style={styles.title}>Eclipse Login</Title>
       <Paragraph style={styles.message}>{/* Error messages go here */}</Paragraph>
@@ -100,7 +100,7 @@ card:{
 title:{
   textAlign: 'center',
   fontWeight: '900',
-  color: '#000',
+  color: '#fff',
   margin: 10,
   fontSize: 30
 },

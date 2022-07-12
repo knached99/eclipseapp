@@ -26,9 +26,9 @@ const ForgotPwd = ({navigation}) => {
   return (
     <>
      <StatusBar style="dark" />
-    <View style={styles.body}>
+    <View >
       <KeyboardAvoidingView>
-    <Card style={styles.card}>
+    <Card>
     <Card.Content>
       <Title style={styles.title}>Forgot Password?</Title>
       <Paragraph>No worries, just follow the instructions and you'll be able to reset your password</Paragraph>
@@ -86,7 +86,7 @@ card:{
 title:{
   textAlign: 'center',
   fontWeight: '900',
-  color: '#000',
+  color: '#fff',
   margin: 10,
   fontSize: 30
 },
