@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View, Image, TouchableOpacity, Alert, KeyboardAvoidingView} from 'react-native'
+import { StyleSheet, Text, View, Image, TouchableOpacity, Alert, KeyboardAvoidingView, TouchableWithoutFeedback, Keyboard} from 'react-native'
 import React from 'react'
 import * as yup from 'yup'
 import {
@@ -28,8 +28,8 @@ const Login = ({navigation}) => {
   return (
     <>
      <StatusBar style="dark" />
-    <View>
-      <KeyboardAvoidingView>
+    <KeyboardAvoidingView behavior={Platform.OS === "ios" ? "padding" : "height"} style={{flex: 1, justifyContent: 'space-around'}}>
+    <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
     <Card>
     <Card.Content>
       <Title style={styles.title}>Eclipse Login</Title>
@@ -72,17 +72,16 @@ const Login = ({navigation}) => {
                 {(errors.password && touched.password) && <HelperText style={styles.error}>{errors.password}</HelperText>}
                 
         <Button mode="contained" style={styles.button}  onPress={handleSubmit} disabled={!isValid}>Login</Button>
-        <Button style={styles.button} onPress={()=> navigation.navigate('Signup')}>No Account?</Button>
-        <Button  style={styles.button} onPress={()=>navigation.navigate('ForgotPwd')}>Forgot Password?</Button>
+        <Button style={styles.link} onPress={()=> navigation.navigate('Signup')}>No Account?</Button>
+        <Button  style={styles.link} onPress={()=>navigation.navigate('ForgotPwd')}>Forgot Password?</Button>
         <View style={{height: 100}}></View>
        </View>
      )}
    </Formik>
     </Card.Actions>
   </Card>
-  
-  </KeyboardAvoidingView>
-    </View>
+  </TouchableWithoutFeedback>
+    </KeyboardAvoidingView>
     </>
   )
 }
@@ -100,8 +99,8 @@ card:{
 title:{
   textAlign: 'center',
   fontWeight: '900',
-  color: '#fff',
-  margin: 10,
+  color: '#000',
+  marginTop: 30,
   fontSize: 30
 },
 error:{
@@ -117,6 +116,9 @@ input:{
 button: {
   margin: 10,
   padding: 10,
+},
+link:{
+  margin: 5
 }
 });
 

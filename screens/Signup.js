@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View, Image, TouchableOpacity, Alert} from 'react-native'
+import { StyleSheet, Text, View, Image, TouchableWithoutFeedback, KeyboardAvoidingView, Keyboard} from 'react-native'
 import React, {useLayoutEffect} from 'react'
 import * as yup from 'yup'
 import {
@@ -58,7 +58,8 @@ const signupValidationSchema = yup.object().shape({
   return (
     <>
     <StatusBar style="dark" />
-    <View >
+    <KeyboardAvoidingView behavior={Platform.OS === "ios" ? "padding" : "height"} style={{flex: 1, justifyContent: 'space-around'}}>
+    <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
      <Card>
         <Card.Content>
             <Title style={styles.title}>Create Account</Title>
@@ -137,7 +138,9 @@ const signupValidationSchema = yup.object().shape({
             </Formik>
         </Card.Actions>
      </Card>
-    </View>
+     </TouchableWithoutFeedback>
+     </KeyboardAvoidingView>
+    
     </>
   )
 }
@@ -156,8 +159,8 @@ const styles = StyleSheet.create({
       title:{
         textAlign: 'center',
         fontWeight: '900',
-        color: '#fff',
-        margin: 10,
+        color: '#000',
+        marginTop: 30,
         fontSize: 30
       },
       error:{

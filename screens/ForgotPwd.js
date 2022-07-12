@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View, Image, TouchableOpacity, Alert, KeyboardAvoidingView} from 'react-native'
+import { StyleSheet, Text, View, Image, TouchableOpacity, Alert, TouchableWithoutFeedback, KeyboardAvoidingView, Keyboard} from 'react-native'
 import React from 'react'
 import * as yup from 'yup'
 import {
@@ -26,8 +26,8 @@ const ForgotPwd = ({navigation}) => {
   return (
     <>
      <StatusBar style="dark" />
-    <View >
-      <KeyboardAvoidingView>
+    <KeyboardAvoidingView behavior={Platform.OS === "ios" ? "padding" : "height"} style={{flex: 1, justifyContent: 'space-around'}}>
+    <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
     <Card>
     <Card.Content>
       <Title style={styles.title}>Forgot Password?</Title>
@@ -66,9 +66,8 @@ const ForgotPwd = ({navigation}) => {
    </Formik>
     </Card.Actions>
   </Card>
-  
+  </TouchableWithoutFeedback>
   </KeyboardAvoidingView>
-    </View>
     </>
   )
 }
@@ -84,11 +83,11 @@ card:{
   backgroundColor: '#fff'
 },
 title:{
-  textAlign: 'center',
-  fontWeight: '900',
-  color: '#fff',
-  margin: 10,
-  fontSize: 30
+    textAlign: 'center',
+    fontWeight: '900',
+    color: '#000',
+    marginTop: 30,
+    fontSize: 30
 },
 error:{
   textAlign: 'left',
