@@ -21,9 +21,7 @@ const ForgotPwd = ({navigation}) => {
     email: yup
       .string()
       .required('Your email is required').matches(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/, 'you entered an invalid email'),
-    password: yup
-      .string()
-      .required('Your password is required')
+ 
   })
   return (
     <>
