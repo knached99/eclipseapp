@@ -15,7 +15,7 @@ import {
 import {Formik} from 'formik';
 import { StatusBar } from 'expo-status-bar';
 
-const Login = ({navigation}) => {
+const ForgotPwd = ({navigation}) => {
 
   const loginValidationSchema = yup.object().shape({
     email: yup
@@ -32,7 +32,8 @@ const Login = ({navigation}) => {
       <KeyboardAvoidingView>
     <Card style={styles.card}>
     <Card.Content>
-      <Title style={styles.title}>Eclipse Login</Title>
+      <Title style={styles.title}>Forgot Password?</Title>
+      <Paragraph>No worries, just follow the instructions and you'll be able to reset your password</Paragraph>
       <Paragraph style={styles.message}>{/* Error messages go here */}</Paragraph>
     </Card.Content>
     <Card.Cover source={{ uri: 'https://images.unsplash.com/photo-1573120525707-4549889744f2?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80' }} />
@@ -58,22 +59,9 @@ const Login = ({navigation}) => {
                   error={(errors.email && touched.email) ? true: false}
                 /> 
                 {(errors.email && touched.email) && <HelperText type="error" style={styles.error}>{errors.email}</HelperText>}
-                 <TextInput
-                  name="password"
-                  mode="outlined"
-                  label="Password"
-                  style={styles.input}
-                  onChangeText={handleChange('password')}
-                  onBlur={handleBlur('password')}
-                  value={values.password}
-                  secureTextEntry
-                  error={(errors.password && touched.password) ? true: false}
-                />
-                {(errors.password && touched.password) && <HelperText style={styles.error}>{errors.password}</HelperText>}
+               
                 
-        <Button mode="contained" style={styles.button}  onPress={handleSubmit} disabled={!isValid}>Login</Button>
-        <Button style={styles.button} onPress={()=> navigation.navigate('Signup')}>No Account?</Button>
-        <Button  style={styles.button} onPress={()=>navigation.navigate('ForgotPwd')}>Forgot Password?</Button>
+        <Button mode="contained" style={styles.button}  onPress={handleSubmit} disabled={!isValid}>Send Reset Request</Button>
         <View style={{height: 100}}></View>
        </View>
      )}
@@ -120,4 +108,4 @@ button: {
 }
 });
 
-export default Login
+export default ForgotPwd
